@@ -1,0 +1,30 @@
+// Build file for typing game
+
+// plugins to create javafx application
+plugins{
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+}
+
+// general repositories to inherit
+repositories{
+    jcenter()
+    mavenCentral()
+}
+
+// dependencies
+dependencies{
+    implementation 'com.google.guava:guava:26.0-jre'
+    testImplementation 'junit:junit:4.12'
+}
+
+// javafx modules
+javafx {
+    modules = [ 'javafx.controls' ]
+}
+
+// create run task to run the game
+task(run, dependsOn: 'classes', type: JavaExec){
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'game.TypingGame'
+}
